@@ -1,7 +1,7 @@
-/* Smartfish Homepage Styles */
 
 // Variables
-$primary-color: #e44d26; // Example primary color, adjust as needed
+$bg-color: white;
+$primary-color: #e44d26; 
 $secondary-color: #333;
 $text-color: #555;
 $light-gray: #f4f4f4;
@@ -12,6 +12,14 @@ $dark-gray: #222;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+@mixin text-border($color, $radius: 20px) {
+  border: 1px solid $color;
+  border-radius: $radius;
+  padding: 6px 14px;
+  display: inline-block;
 }
 
 @mixin button-style($bg-color, $text-color) {
@@ -33,13 +41,14 @@ $dark-gray: #222;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    // background-color: #ccc;
 }
 
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: $text-color;
-    background-color: #fff;
+    background-color: white;
 }
 
 .container {
@@ -89,7 +98,7 @@ img {
 .subtitle {
     font-size: 0.9em;
     color: $primary-color;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 10px;
 }
@@ -113,9 +122,9 @@ h3 {
 
 /* Header Section */
 .header {
-    background-color: $dark-gray;
-    color: #fff;
-    padding: 15px 0;
+    background-color: white;
+    color: white;
+    padding: 5px 0;
 
     .container {
         display: flex;
@@ -125,18 +134,19 @@ h3 {
 
     .logo img {
         height: 40px;
+        color: #e44d26;
     }
 
     .main-nav ul {
         display: flex;
 
         li {
-            margin-left: 20px;
+            margin-left: 30px;
 
             a {
-                color: #fff;
-                font-weight: bold;
-
+                // color: #ccc;
+                font-weight:200;
+                text-decoration: $secondary-color;
                 &:hover {
                     color: $primary-color;
                 }
@@ -153,13 +163,15 @@ h3 {
 
 /* Hero Section */
 .hero-section {
-    background: url('https://via.placeholder.com/1500x800?text=Hero+Background') no-repeat center center/cover;
-    color: #fff;
-    text-align: center;
-    padding: 100px 0;
-    position: relative;
-    border-radius: 0 0 50px 50px;
-    overflow: hidden;
+     background: url('https://images.unsplash.com/photo-1716191300020-b52dec5b70a8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
+no-repeat center center/cover;
+  color: white;
+  text-align: center;
+  padding: 90px 0;
+  margin: 0 4rem;
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
 
     &::before {
         content: '';
@@ -188,7 +200,8 @@ h3 {
 
         .subtitle {
             color: #fff;
-            font-size: 1.1em;
+            font-weight: 500;
+            @include text-border($light-gray); 
         }
 
         .description {
@@ -231,18 +244,29 @@ h3 {
             flex: 1;
 
             h2 {
-                font-size: 2.5em;
+                font-size: 2em;
                 color: $dark-gray;
             }
 
             p {
-                margin-bottom: 15px;
-                line-height: 1.8;
+                margin-bottom: 5px;
+                // line-height: 1.8;
             }
 
             .btn-primary {
                 border-radius: 25px;
                 padding: 12px 25px;
+            }
+
+            .subtitle{
+                 @include text-border($dark-gray);
+                 color: $secondary-color; 
+                 font-weight: 600;
+            }
+            .btn{
+                @include text-border($secondary-color);
+                background-color: white;
+                color: $dark-gray;
             }
         }
     }
@@ -250,8 +274,8 @@ h3 {
 
 /* Products Section */
 .products-section {
-    padding: 80px 0;
-    background-color: $light-gray;
+    padding: 90px 0;
+    background-color: $bg-color;
     text-align: center;
 
     .section-header {
@@ -269,9 +293,10 @@ h3 {
         gap: 30px;
 
         .product-card {
-            background-color: #fff;
+            // background-color: 
+            @include text-border($text-color );
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            // box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             padding: 20px;
             text-align: left;
             transition: transform 0.3s ease;
@@ -325,55 +350,92 @@ h3 {
 
 /* Fly Ash Section */
 .fly-ash-section {
-    padding: 80px 0;
-    background-color: #fff;
-    text-align: center;
+  padding: 40px 0;
+  text-align: center;
 
-    .section-header {
-        margin-bottom: 50px;
+  .section-header {
+    margin-bottom: 40px;
 
-        h2 {
-            font-size: 2.5em;
-            margin-top: 10px;
-        }
+    .subtitle {
+      @include text-border(#bbb, 25px);
+      font-size: 0.9rem;
     }
 
-    .fly-ash-content {
+    h2 {
+      font-size: 2.6rem;
+      font-weight: 700;
+
+      span {
+        color: #e02424; // red highlight
+      }
+    }
+  }
+
+  .fly-ash-wrapper {
+    position: relative;
+     background: url(https://plus.unsplash.com/premium_photo-1661962897063-641992fde8ad?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDQ5fHx8ZW58MHx8fHx8)
+            no-repeat center center/cover;
+    height: 470px;
+    border-radius: 35px;
+    overflow: hidden;
+
+    .bg-machine {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 55%;
+      object-fit: contain;
+      z-index: 1;
+    }
+
+    .fly-ash-info {
+      position: absolute;
+      right: 50px;
+      bottom: 50px;
+      width: 330px;
+      padding: 25px 25px;
+      background: #fff;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+      z-index: 2;
+      text-align: left;
+
+      .small {
+        color: #e02424;
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      p {
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+      }
+
+      .btn-card-link {
+        width: 45px;
+        height: 45px;
+        background: #e02424;
+        border-radius: 50%;
         display: flex;
         align-items: center;
-        gap: 50px;
-        margin-top: 30px;
-
-        .fly-ash-image {
-            flex: 2;
-            img {
-                border-radius: 10px;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            }
-        }
-
-        .fly-ash-info {
-            flex: 1;
-            text-align: left;
-
-            h3 {
-                font-size: 2em;
-                color: $dark-gray;
-                margin-bottom: 15px;
-            }
-
-            p {
-                margin-bottom: 20px;
-                line-height: 1.8;
-            }
-        }
+        justify-content: center;
+        color: #fff;
+        font-size: 1.2rem;
+      }
     }
+  }
 }
 
 /* Blog Section */
 .blog-section {
-    padding: 80px 0;
-    background-color: $light-gray;
+    padding: 40px 0;
+    background-color: $bg-color;
     text-align: center;
 
     .section-header {
@@ -446,7 +508,7 @@ h3 {
 /* Inquiry Section */
 .inquiry-section {
     background: url('https://via.placeholder.com/1500x500?text=Inquiry+Background') no-repeat center center/cover;
-    color: #fff;
+    color: $text-color;
     padding: 80px 0;
     position: relative;
     text-align: center;
@@ -458,7 +520,7 @@ h3 {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
+        // background-color: rgba(0, 0, 0, 0.6);
     }
 
     .container {
